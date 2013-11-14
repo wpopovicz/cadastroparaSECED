@@ -4,8 +4,12 @@
  */
 package view;
 
+import Model.DaoPessoa;
 import Model.HibernateDao;
 import entities.Pessoa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
     
 /**
  *
@@ -124,10 +128,10 @@ public class Cadastro extends javax.swing.JDialog {
         jLabel28 = new javax.swing.JLabel();
         jTextFieldEncaminhadaDia = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextFieldInstituição = new javax.swing.JTextField();
+        jTextFieldInstituicao = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaOBS = new javax.swing.JTextArea();
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
@@ -141,12 +145,33 @@ public class Cadastro extends javax.swing.JDialog {
                 jTextFieldnumerodocadastroActionPerformed(evt);
             }
         });
+        jTextFieldnumerodocadastro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldnumerodocadastroKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Nome da Criança:");
 
         jLabel3.setText("Nascida:");
 
         jFormattedTextFielddatadenascimentodacrianca.setText("     /       /");
+        jFormattedTextFielddatadenascimentodacrianca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFielddatadenascimentodacriancaActionPerformed(evt);
+            }
+        });
+        jFormattedTextFielddatadenascimentodacrianca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFielddatadenascimentodacriancaKeyTyped(evt);
+            }
+        });
+
+        jTextFieldnomedacrianca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldnomedacriancaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Idade:");
 
@@ -155,8 +180,19 @@ public class Cadastro extends javax.swing.JDialog {
                 jTextFieldidadeanoActionPerformed(evt);
             }
         });
+        jTextFieldidadeano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldidadeanoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("anos");
+
+        jTextFieldidademeses.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldidademesesKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("meses");
 
@@ -188,6 +224,12 @@ public class Cadastro extends javax.swing.JDialog {
 
         jLabel8.setText("Nome da Mãe:");
 
+        jTextFieldNomedaMae.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomedaMaeKeyTyped(evt);
+            }
+        });
+
         jLabel9.setText("Mãe Trabalha:");
 
         buttonGroup2.add(jRadioButtonMaeTrabalhaS);
@@ -209,8 +251,19 @@ public class Cadastro extends javax.swing.JDialog {
         jLabel12.setText("Telefone:");
 
         jTextFieldTelefonedaMãe.setToolTipText("Telefone do local de trabalho da mãe");
+        jTextFieldTelefonedaMãe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefonedaMãeKeyTyped(evt);
+            }
+        });
 
         jLabel13.setText("Nome do Pai:");
+
+        jTextFieldNomedoPai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomedoPaiKeyTyped(evt);
+            }
+        });
 
         jLabel14.setText("Pai Trabalha:");
 
@@ -230,6 +283,11 @@ public class Cadastro extends javax.swing.JDialog {
         jTextFieldTelefonedoPai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTelefonedoPaiActionPerformed(evt);
+            }
+        });
+        jTextFieldTelefonedoPai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefonedoPaiKeyTyped(evt);
             }
         });
 
@@ -254,6 +312,12 @@ public class Cadastro extends javax.swing.JDialog {
 
         jLabel20.setText("R$");
 
+        jTextFieldRendaFamiliar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldRendaFamiliarKeyTyped(evt);
+            }
+        });
+
         jLabel21.setText("Endereço Residencial:");
 
         jLabel22.setText("Rua:");
@@ -267,8 +331,19 @@ public class Cadastro extends javax.swing.JDialog {
         jLabel23.setText("Nº:");
 
         jTextFieldNumero.setToolTipText("Número da casa");
+        jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNumeroKeyTyped(evt);
+            }
+        });
 
         jLabel24.setText("CEP:");
+
+        jTextFieldCEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCEPKeyTyped(evt);
+            }
+        });
 
         jLabel25.setText("Bairro:");
 
@@ -281,6 +356,11 @@ public class Cadastro extends javax.swing.JDialog {
         jLabel26.setText("Telefone:");
 
         jTextFieldTelefoneResidencial.setToolTipText("telefone para contato");
+        jTextFieldTelefoneResidencial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefoneResidencialKeyTyped(evt);
+            }
+        });
 
         jLabel27.setText("Obs: A criança fica aos cuidados de quem?");
 
@@ -300,17 +380,17 @@ public class Cadastro extends javax.swing.JDialog {
 
         jLabel29.setText("Instituição:");
 
-        jTextFieldInstituição.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldInstituicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInstituiçãoActionPerformed(evt);
+                jTextFieldInstituicaoActionPerformed(evt);
             }
         });
 
         jLabel30.setText("OBS:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaOBS.setColumns(20);
+        jTextAreaOBS.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaOBS);
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -382,7 +462,7 @@ public class Cadastro extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel29)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldInstituição))
+                                        .addComponent(jTextFieldInstituicao))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel27)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -614,7 +694,7 @@ public class Cadastro extends javax.swing.JDialog {
                     .addComponent(jLabel28)
                     .addComponent(jTextFieldEncaminhadaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextFieldInstituição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -647,7 +727,7 @@ public class Cadastro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldnumerodocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnumerodocadastroActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextFieldnumerodocadastroActionPerformed
 
     private void jTextFieldidadeanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldidadeanoActionPerformed
@@ -682,17 +762,182 @@ public class Cadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEncaminhadaDiaActionPerformed
 
-    private void jTextFieldInstituiçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInstituiçãoActionPerformed
+    private void jTextFieldInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInstituicaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInstituiçãoActionPerformed
+    }//GEN-LAST:event_jTextFieldInstituicaoActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Salvar aqui");
+        Pessoa p = new Pessoa();
+        DaoPessoa daoPessoa = new DaoPessoa();
+
+        
+        int cadastro = Integer.getInteger(jTextFieldnumerodocadastro.getText());
+        String nome = jTextFieldnomedacrianca.getText();
+        String dataNascimento = jFormattedTextFielddatadenascimentodacrianca.getText();
+        int idadeAno = Integer.getInteger(jTextFieldidadeano.getText());
+        int idadeMes = Integer.getInteger(jTextFieldidademeses.getText());
+        // os jbooton aqui do nivel que ele é
+        String instituicaoPretendida = jTextFieldInstituicaoPretendida.getText();
+        
+        String nomedaMae = jTextFieldNomedaMae.getText();
+        // j boton se mae trabalha ou nao
+        String profisaodaMae = jTextFieldProfissaodaMae.getText();
+        String localdeTrabalhodaMae = jTextFieldLocaldeTrabalhodaMae.getText();
+        String telefonedaMae = jTextFieldTelefonedaMãe.getText();
+        
+        String nomedoPai = jTextFieldNomedoPai.getText();
+        // jboton aqui se o pai trabalha ou nao
+        String profisaodoPai = jTextFieldNomedoPai.getText();
+        String localdeTrabalhodoPai = jTextFieldProfissaodoPai.getText();
+        String telefonedoPai = jTextFieldTelefonedoPai.getText();
+        
+        //estado civil que usa o jboton
+        float rendaFamiliar = Float.parseFloat(jTextFieldRendaFamiliar.getText());
+        String rua = jTextFieldRua.getText();
+        int numerodaCasa = Integer.getInteger(jTextFieldNumero.getText());
+        String cep = jTextFieldCEP.getText();
+        String bairro = jTextFieldBairro.getText();
+        String quemCuidadaCrianca = jTextFieldAcriancaFicaaosCuidadodeQuem.getText();
+        String encamiada = jTextFieldEncaminhadaDia.getText();
+        String istituicao = jTextFieldInstituicao.getText();
+        String obs = jTextAreaOBS.getText();
+        
+        p.setCadastro(cadastro);
+        p.setNome(nome);
+        p.setDatadeNascimento(dataNascimento);
+        p.setAnosdeNascimento(idadeAno);
+        p.setMesdeNascimento(idadeMes);
+        p.setInstituicaoPretendida(instituicaoPretendida);
+        p.setNomedaMae(nomedaMae);
+        // faltando se mae trabalha aqui
+        p.setProfissaodaMae(profisaodaMae);
+        p.setLocaldeTrabalhodaMae(localdeTrabalhodaMae);
+        p.setTelefonedaMae(telefonedaMae);
+        p.setNomedoPai(nomedoPai);
+        // faltando se o pai trabalha aqui
+        p.setProfissaodoPai(profisaodoPai);
+        p.setLocaldeTrabalhodoPai(localdeTrabalhodoPai);
+        p.setTelefonedoPai(telefonedoPai);
+        //faltando o estado civil aqui
+        p.setRendaFamiliar(rendaFamiliar);
+        p.setRua(rua);
+        p.setNumero(numerodaCasa);
+        p.setCEP(cep);
+        p.setBairro(bairro);
+        p.setCuidaCrianca(quemCuidadaCrianca);
+        p.setEncaminhamento(encamiada);
+        p.setInstituicao(istituicao);
+        
+        try {
+            daoPessoa.persist(p);
+            JOptionPane.showMessageDialog(this, "Cadastro realizado com Sucesso");
+            
+            } catch (Exception ex) {
+            Logger.getLogger(Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextFieldnumerodocadastroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldnumerodocadastroKeyTyped
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldnumerodocadastroKeyTyped
+
+    private void jTextFieldnomedacriancaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldnomedacriancaKeyTyped
+       String caracteres = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldnomedacriancaKeyTyped
+
+    private void jFormattedTextFielddatadenascimentodacriancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFielddatadenascimentodacriancaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFielddatadenascimentodacriancaActionPerformed
+
+    private void jFormattedTextFielddatadenascimentodacriancaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFielddatadenascimentodacriancaKeyTyped
+        String caracteres = "0987654321/";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFielddatadenascimentodacriancaKeyTyped
+
+    private void jTextFieldidadeanoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldidadeanoKeyTyped
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldidadeanoKeyTyped
+
+    private void jTextFieldidademesesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldidademesesKeyTyped
+        String caracteres = "0987654321/";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldidademesesKeyTyped
+
+    private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNumeroKeyTyped
+
+    private void jTextFieldTelefonedaMãeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonedaMãeKeyTyped
+        String caracteres = "0987654321()-";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTelefonedaMãeKeyTyped
+
+    private void jTextFieldTelefonedoPaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonedoPaiKeyTyped
+       String caracteres = "0987654321()-";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTelefonedoPaiKeyTyped
+
+    private void jTextFieldTelefoneResidencialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneResidencialKeyTyped
+       String caracteres = "0987654321()-";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTelefoneResidencialKeyTyped
+
+    private void jTextFieldRendaFamiliarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRendaFamiliarKeyTyped
+        String caracteres = "0987654321.";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldRendaFamiliarKeyTyped
+
+    private void jTextFieldCEPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCEPKeyTyped
+        String caracteres = "0987654321.-";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCEPKeyTyped
+
+    private void jTextFieldNomedaMaeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomedaMaeKeyTyped
+       String caracteres = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomedaMaeKeyTyped
+
+    private void jTextFieldNomedoPaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomedoPaiKeyTyped
+       String caracteres = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomedoPaiKeyTyped
 
     /**
      * @param args the command line arguments
@@ -793,13 +1038,13 @@ public class Cadastro extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaOBS;
     private javax.swing.JTextField jTextFieldAcriancaFicaaosCuidadodeQuem;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCEP;
     private javax.swing.JTextField jTextFieldEncaminhadaDia;
+    private javax.swing.JTextField jTextFieldInstituicao;
     private javax.swing.JTextField jTextFieldInstituicaoPretendida;
-    private javax.swing.JTextField jTextFieldInstituição;
     private javax.swing.JTextField jTextFieldLocaldeTrabalhodaMae;
     private javax.swing.JTextField jTextFieldLocaldeTrabalhodoPai;
     private javax.swing.JTextField jTextFieldNomedaMae;

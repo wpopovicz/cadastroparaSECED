@@ -5,13 +5,11 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -26,12 +24,16 @@ public class Pessoa implements Serializable{
     private float rendaFamiliar;
     @Column(length= 200)
     private String cuidaCrianca;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar encaminhamento = Calendar.getInstance();
+    @Column(length= 10)
+    private String encaminhamento;
     @Column(length= 200)
     private String instituicao;
+    @Column(length= 200)
+    private String instituicaoPretendida;
     @Column(length= 20)
     private int cadastro;
+    @Column (length=200)
+    private String OBS;
     //pai
     @Column(length = 100)
     private String nomedoPai;
@@ -53,30 +55,40 @@ public class Pessoa implements Serializable{
     @Column(length = 100)
     private String telefonedaMae;
     //criança
+    @Column(length = 100)
     private String nome;
-    @Temporal(TemporalType.DATE)
-    private Calendar datadeNascimento = Calendar.getInstance();
+    @Column(length = 10)
+    private String DatadeNascimento;
+    @Column(length = 3)
+    private int anosdeNascimento;
+    @Column(length = 2)
+    private int mesdeNascimento;
     @Column(length = 100)
     private String nivel;
     //endereço
     @Column(length = 150)
     private String rua;
+    @Column(length = 9)
+    private String CEP;
     @Column(length = 6)
     private int numero;
     @Column(length = 150)
     private String bairro;
     @Column(length = 14)
     private String telefonedeContato;
-    
+
     public Pessoa() {
     }
 
-    public Pessoa(int id, float rendaFamiliar, String cuidaCrianca, String instituicao, int cadastro, String nomedoPai, Boolean trabalhodoPai, String profissaodoPai, String localdeTrabalhodoPai, String telefonedoPai, String nomedaMae, Boolean trabalhodaMae, String profissaodaMae, String localdeTrabalhodaMae, String telefonedaMae, String nome, String nivel, String rua, int numero, String bairro, String telefonedeContato) {
+    public Pessoa(int id, float rendaFamiliar, String cuidaCrianca, String encaminhamento, String instituicao, String instituicaoPretendida, int cadastro, String OBS, String nomedoPai, Boolean trabalhodoPai, String profissaodoPai, String localdeTrabalhodoPai, String telefonedoPai, String nomedaMae, Boolean trabalhodaMae, String profissaodaMae, String localdeTrabalhodaMae, String telefonedaMae, String nome, String DatadeNascimento, int anosdeNascimento, int mesdeNascimento, String nivel, String rua, String CEP, int numero, String bairro, String telefonedeContato) {
         this.id = id;
         this.rendaFamiliar = rendaFamiliar;
         this.cuidaCrianca = cuidaCrianca;
+        this.encaminhamento = encaminhamento;
         this.instituicao = instituicao;
+        this.instituicaoPretendida = instituicaoPretendida;
         this.cadastro = cadastro;
+        this.OBS = OBS;
         this.nomedoPai = nomedoPai;
         this.trabalhodoPai = trabalhodoPai;
         this.profissaodoPai = profissaodoPai;
@@ -88,11 +100,25 @@ public class Pessoa implements Serializable{
         this.localdeTrabalhodaMae = localdeTrabalhodaMae;
         this.telefonedaMae = telefonedaMae;
         this.nome = nome;
+        this.DatadeNascimento = DatadeNascimento;
+        this.anosdeNascimento = anosdeNascimento;
+        this.mesdeNascimento = mesdeNascimento;
         this.nivel = nivel;
         this.rua = rua;
+        this.CEP = CEP;
         this.numero = numero;
         this.bairro = bairro;
-        this.telefonedeContato = telefonedeContato;       
+        this.telefonedeContato = telefonedeContato;
+    }
+
+    
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
     }
 
     public int getId() {
@@ -119,11 +145,11 @@ public class Pessoa implements Serializable{
         this.cuidaCrianca = cuidaCrianca;
     }
 
-    public Calendar getEncaminhamento() {
+    public String getEncaminhamento() {
         return encaminhamento;
     }
 
-    public void setEncaminhamento(Calendar encaminhamento) {
+    public void setEncaminhamento(String encaminhamento) {
         this.encaminhamento = encaminhamento;
     }
 
@@ -133,6 +159,14 @@ public class Pessoa implements Serializable{
 
     public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
+    }
+
+    public String getInstituicaoPretendida() {
+        return instituicaoPretendida;
+    }
+
+    public void setInstituicaoPretendida(String instituicaoPretendida) {
+        this.instituicaoPretendida = instituicaoPretendida;
     }
 
     public int getCadastro() {
@@ -231,12 +265,28 @@ public class Pessoa implements Serializable{
         this.nome = nome;
     }
 
-    public Calendar getDatadeNascimento() {
-        return datadeNascimento;
+    public String getDatadeNascimento() {
+        return DatadeNascimento;
     }
 
-    public void setDatadeNascimento(Calendar datadeNascimento) {
-        this.datadeNascimento = datadeNascimento;
+    public void setDatadeNascimento(String DatadeNascimento) {
+        this.DatadeNascimento = DatadeNascimento;
+    }
+
+    public int getAnosdeNascimento() {
+        return anosdeNascimento;
+    }
+
+    public void setAnosdeNascimento(int anosdeNascimento) {
+        this.anosdeNascimento = anosdeNascimento;
+    }
+
+    public int getMesdeNascimento() {
+        return mesdeNascimento;
+    }
+
+    public void setMesdeNascimento(int mesdeNascimento) {
+        this.mesdeNascimento = mesdeNascimento;
     }
 
     public String getNivel() {
@@ -278,11 +328,18 @@ public class Pessoa implements Serializable{
     public void setTelefonedeContato(String telefonedeContato) {
         this.telefonedeContato = telefonedeContato;
     }
-    
+
+    public String getOBS() {
+        return OBS;
+    }
+
+    public void setOBS(String OBS) {
+        this.OBS = OBS;
+    }
+
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", rendaFamiliar=" + rendaFamiliar + ", cuidaCrianca=" + cuidaCrianca + ", encaminhamento=" + encaminhamento + ", instituicao=" + instituicao + ", cadastro=" + cadastro + ", nomedoPai=" + nomedoPai + ", trabalhodoPai=" + trabalhodoPai + ", profissaodoPai=" + profissaodoPai + ", localdeTrabalhodoPai=" + localdeTrabalhodoPai + ", telefonedoPai=" + telefonedoPai + ", nomedaMae=" + nomedaMae + ", trabalhodaMae=" + trabalhodaMae + ", profissaodaMae=" + profissaodaMae + ", localdeTrabalhodaMae=" + localdeTrabalhodaMae + ", telefonedaMae=" + telefonedaMae + ", nome=" + nome + ", datadeNascimento=" + datadeNascimento + ", nivel=" + nivel + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", telefonedeContato=" + telefonedeContato + '}';
+        return "Pessoa{" + "id=" + id + ", rendaFamiliar=" + rendaFamiliar + ", cuidaCrianca=" + cuidaCrianca + ", encaminhamento=" + encaminhamento + ", instituicao=" + instituicao + ", instituicaoPretendida=" + instituicaoPretendida + ", cadastro=" + cadastro + ", OBS=" + OBS + ", nomedoPai=" + nomedoPai + ", trabalhodoPai=" + trabalhodoPai + ", profissaodoPai=" + profissaodoPai + ", localdeTrabalhodoPai=" + localdeTrabalhodoPai + ", telefonedoPai=" + telefonedoPai + ", nomedaMae=" + nomedaMae + ", trabalhodaMae=" + trabalhodaMae + ", profissaodaMae=" + profissaodaMae + ", localdeTrabalhodaMae=" + localdeTrabalhodaMae + ", telefonedaMae=" + telefonedaMae + ", nome=" + nome + ", DatadeNascimento=" + DatadeNascimento + ", anosdeNascimento=" + anosdeNascimento + ", mesdeNascimento=" + mesdeNascimento + ", nivel=" + nivel + ", rua=" + rua + ", CEP=" + CEP + ", numero=" + numero + ", bairro=" + bairro + ", telefonedeContato=" + telefonedeContato + '}';
     }
-    
-    
+                
 }
