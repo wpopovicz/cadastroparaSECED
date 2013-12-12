@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author willian
  */
-public class Pesquisa extends javax.swing.JFrame {
+public class AtualizaPessoa extends javax.swing.JFrame {
 
     private Visao telaAnterior;
     private HibernateDao hibernatedao = new HibernateDao();
@@ -27,13 +27,13 @@ public class Pesquisa extends javax.swing.JFrame {
     private Pessoa pessoa;
 
     /**
-     * Creates new form Pesquisa
+     * Creates new form AtualizaPessoa
      */
-    public Pesquisa() {
+    public AtualizaPessoa() {
         initComponents();
     }
 
-    public Pesquisa(Visao telaAnterior) throws Exception {
+    public AtualizaPessoa(Visao telaAnterior) throws Exception {
         this();
         this.telaAnterior = telaAnterior;
     }
@@ -54,16 +54,16 @@ public class Pesquisa extends javax.swing.JFrame {
                 for (Object e : lista) {
                 }
             } catch (Exception ex) {
-                Logger.getLogger(Pesquisa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AtualizaPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Object e : lista) {
                 DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-                modelo.addColumn("Id");
                 modelo.addColumn("Número do Cadastro");
                 modelo.addColumn("Nome da Criança");
                 modelo.addColumn("Nome da Mãe");
                 modelo.addColumn("Nome do Pai");
                 modelo.addColumn("Nome do Bairro que Residi");
+                modelo.addColumn("Instituição Pretendida");
                 
                 if (lista.isEmpty()) {
                     modelo.addRow(new String[]{"Não tem produto",
@@ -80,12 +80,12 @@ public class Pesquisa extends javax.swing.JFrame {
 
 
                     // Alimenta as linhas de dados  
-                    modelo.addRow(new String[]{Integer.toString(p.getId()),
-                        p.getCadastro() + "",
+                    modelo.addRow(new String[]{p.getCadastro() + "",                        
                         p.getNome(),
                         p.getNomedaMae(),
                         p.getNomedoPai(),
-                        p.getBairro()});
+                        p.getBairro(),
+                        p.getInstituicaoPretendida()});
                 }
 
                 jTable1.setModel(modelo);
@@ -98,16 +98,16 @@ public class Pesquisa extends javax.swing.JFrame {
                 for (Object e : lista) {
                 }
             } catch (Exception ex) {
-                Logger.getLogger(Pesquisa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AtualizaPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Object e : lista) {
                 DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-                modelo.addColumn("Id");
                 modelo.addColumn("Número do Cadastro");
                 modelo.addColumn("Nome da Criança");
                 modelo.addColumn("Nome da Mãe");
                 modelo.addColumn("Nome do Pai");
                 modelo.addColumn("Nome do Bairro que Residi");
+                modelo.addColumn("Instituição Pretendida");
                 
                 if (lista.isEmpty()) {
                     modelo.addRow(new String[]{"Não tem produto",
@@ -124,12 +124,12 @@ public class Pesquisa extends javax.swing.JFrame {
 
 
                     // Alimenta as linhas de dados  
-                    modelo.addRow(new String[]{Integer.toString(p.getId()),
-                        p.getCadastro() + "",
+                    modelo.addRow(new String[]{p.getCadastro() + "",                        
                         p.getNome(),
                         p.getNomedaMae(),
                         p.getNomedoPai(),
-                        p.getBairro()});
+                        p.getBairro(),
+                        p.getInstituicaoPretendida()});
                 }
 
                 jTable1.setModel(modelo);
@@ -142,19 +142,19 @@ public class Pesquisa extends javax.swing.JFrame {
                 for (Object e : lista) {
                 }
             } catch (Exception ex) {
-                Logger.getLogger(Pesquisa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AtualizaPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Object e : lista) {
                 DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-                modelo.addColumn("Id");
                 modelo.addColumn("Número do Cadastro");
                 modelo.addColumn("Nome da Criança");
                 modelo.addColumn("Nome da Mãe");
                 modelo.addColumn("Nome do Pai");
                 modelo.addColumn("Nome do Bairro que Residi");
+                modelo.addColumn("Instituição Pretendida");
                 
                 if (lista.isEmpty()) {
-                    modelo.addRow(new String[]{"Não tem produto",
+                    modelo.addRow(new String[]{"Não tem pessoa",
                         null,
                         null,
                         null,
@@ -168,12 +168,12 @@ public class Pesquisa extends javax.swing.JFrame {
 
 
                     // Alimenta as linhas de dados  
-                    modelo.addRow(new String[]{Integer.toString(p.getId()),
-                        p.getCadastro() + "",
+                    modelo.addRow(new String[]{p.getCadastro() + "",                        
                         p.getNome(),
                         p.getNomedaMae(),
                         p.getNomedoPai(),
-                        p.getBairro()});
+                        p.getBairro(),
+                        p.getInstituicaoPretendida()});
                 }
 
                 jTable1.setModel(modelo);
@@ -186,19 +186,19 @@ public class Pesquisa extends javax.swing.JFrame {
                 for (Object e : lista) {
                 }
             } catch (Exception ex) {
-                Logger.getLogger(Pesquisa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AtualizaPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
             for (Object e : lista) {
                 DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-                modelo.addColumn("Id");
                 modelo.addColumn("Número do Cadastro");
                 modelo.addColumn("Nome da Criança");
                 modelo.addColumn("Nome da Mãe");
                 modelo.addColumn("Nome do Pai");
                 modelo.addColumn("Nome do Bairro que Residi");
+                modelo.addColumn("Instituição Pretendida");
                 
                 if (lista.isEmpty()) {
-                    modelo.addRow(new String[]{"Não tem produto",
+                    modelo.addRow(new String[]{"Não tem pessoa",
                         null,
                         null,
                         null,
@@ -212,12 +212,12 @@ public class Pesquisa extends javax.swing.JFrame {
 
 
                     // Alimenta as linhas de dados  
-                    modelo.addRow(new String[]{Integer.toString(p.getId()),
-                        p.getCadastro() + "",
+                    modelo.addRow(new String[]{p.getCadastro() + "",                        
                         p.getNome(),
                         p.getNomedaMae(),
                         p.getNomedoPai(),
-                        p.getBairro()});
+                        p.getBairro(),
+                        p.getInstituicaoPretendida()});
                 }
 
                 jTable1.setModel(modelo);
@@ -291,13 +291,13 @@ public class Pesquisa extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -473,7 +473,7 @@ public class Pesquisa extends javax.swing.JFrame {
                 atualizarModelo();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            JOptionPane.showMessageDialog(this, "Selecione uma pessoa!");
             jButtonExcluir.setEnabled(true);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
@@ -481,29 +481,31 @@ public class Pesquisa extends javax.swing.JFrame {
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         try {
             int linha = jTable1.getSelectedRow();
-
+            
             Pessoa p = daoPessoa.list().get(linha);
             System.out.println(p.toString());
 
-            this.setEnabled(false);
+//            this.setEnabled(false);
             jButtonEditar.setEnabled(true);
             new Cadastro(this, p).setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            JOptionPane.showMessageDialog(this, "Selecione uma pessoa!");
         }
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        // TODO add your handling code here:
+        try {
+            carregarJTable();
+        } catch (Exception ex) {
+            Logger.getLogger(AtualizaPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       telaAnterior.setEnabled(false);
         System.out.println("form window activated");
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
@@ -528,20 +530,20 @@ public class Pesquisa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pesquisa().setVisible(true);
+                new AtualizaPessoa().setVisible(true);
             }
         });
     }

@@ -136,15 +136,14 @@ public class Visao extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         Cadastro c;
-        c = new Cadastro(this, rootPaneCheckingEnabled);
+        c = new Cadastro(this);
         c.setVisible(true);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        this.setEnabled(false);
-        Pesquisa p;
+        AtualizaPessoa p;
         try {
-            p = new Pesquisa(this);
+            p = new AtualizaPessoa(this);
             p.setVisible(true);
             p.setLocationRelativeTo(null);
         } catch (Exception ex) {
@@ -183,6 +182,7 @@ public class Visao extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Visao().setVisible(true);
+                
             }
         });
     }

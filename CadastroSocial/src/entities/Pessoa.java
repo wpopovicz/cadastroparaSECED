@@ -24,16 +24,18 @@ public class Pessoa implements Serializable{
     private float rendaFamiliar;
     @Column(length= 200)
     private String cuidaCrianca;
-    @Column(length= 10)
+    @Column(length= 200)
     private String encaminhamento;
     @Column(length= 200)
     private String instituicao;
     @Column(length= 200)
     private String instituicaoPretendida;
-    @Column(length= 20)
+    @Column(length= 200)
     private int cadastro;
     @Column (length=200)
     private String OBS;
+    @Column (length = 20)
+    private String estadoCivil;
     //pai
     @Column(length = 100)
     private String nomedoPai;
@@ -57,7 +59,7 @@ public class Pessoa implements Serializable{
     //criança
     @Column(length = 100)
     private String nome;
-    @Column(length = 10)
+    @Column(length = 100)
     private String DatadeNascimento;
     @Column(length = 3)
     private int anosdeNascimento;
@@ -68,19 +70,19 @@ public class Pessoa implements Serializable{
     //endereço
     @Column(length = 150)
     private String rua;
-    @Column(length = 9)
+    @Column(length = 11)
     private String CEP;
-    @Column(length = 6)
+    @Column(length = 10)
     private int numero;
     @Column(length = 150)
     private String bairro;
-    @Column(length = 14)
+    @Column(length = 15)
     private String telefonedeContato;
 
     public Pessoa() {
     }
 
-    public Pessoa(int id, float rendaFamiliar, String cuidaCrianca, String encaminhamento, String instituicao, String instituicaoPretendida, int cadastro, String OBS, String nomedoPai, Boolean trabalhodoPai, String profissaodoPai, String localdeTrabalhodoPai, String telefonedoPai, String nomedaMae, Boolean trabalhodaMae, String profissaodaMae, String localdeTrabalhodaMae, String telefonedaMae, String nome, String DatadeNascimento, int anosdeNascimento, int mesdeNascimento, String nivel, String rua, String CEP, int numero, String bairro, String telefonedeContato) {
+    public Pessoa(int id, float rendaFamiliar, String cuidaCrianca, String encaminhamento, String instituicao, String instituicaoPretendida, int cadastro, String OBS, String estadoCivil, String nomedoPai, Boolean trabalhodoPai, String profissaodoPai, String localdeTrabalhodoPai, String telefonedoPai, String nomedaMae, Boolean trabalhodaMae, String profissaodaMae, String localdeTrabalhodaMae, String telefonedaMae, String nome, String DatadeNascimento, int anosdeNascimento, int mesdeNascimento, String nivel, String rua, String CEP, int numero, String bairro, String telefonedeContato) {
         this.id = id;
         this.rendaFamiliar = rendaFamiliar;
         this.cuidaCrianca = cuidaCrianca;
@@ -89,6 +91,7 @@ public class Pessoa implements Serializable{
         this.instituicaoPretendida = instituicaoPretendida;
         this.cadastro = cadastro;
         this.OBS = OBS;
+        this.estadoCivil = estadoCivil;
         this.nomedoPai = nomedoPai;
         this.trabalhodoPai = trabalhodoPai;
         this.profissaodoPai = profissaodoPai;
@@ -109,16 +112,6 @@ public class Pessoa implements Serializable{
         this.numero = numero;
         this.bairro = bairro;
         this.telefonedeContato = telefonedeContato;
-    }
-
-    
-
-    public String getCEP() {
-        return CEP;
-    }
-
-    public void setCEP(String CEP) {
-        this.CEP = CEP;
     }
 
     public int getId() {
@@ -177,10 +170,26 @@ public class Pessoa implements Serializable{
         this.cadastro = cadastro;
     }
 
+    public String getOBS() {
+        return OBS;
+    }
+
+    public void setOBS(String OBS) {
+        this.OBS = OBS;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
     public String getNomedoPai() {
         return nomedoPai;
     }
-
+    
     public void setNomedoPai(String nomedoPai) {
         this.nomedoPai = nomedoPai;
     }
@@ -305,6 +314,14 @@ public class Pessoa implements Serializable{
         this.rua = rua;
     }
 
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -329,17 +346,9 @@ public class Pessoa implements Serializable{
         this.telefonedeContato = telefonedeContato;
     }
 
-    public String getOBS() {
-        return OBS;
-    }
-
-    public void setOBS(String OBS) {
-        this.OBS = OBS;
-    }
-
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", rendaFamiliar=" + rendaFamiliar + ", cuidaCrianca=" + cuidaCrianca + ", encaminhamento=" + encaminhamento + ", instituicao=" + instituicao + ", instituicaoPretendida=" + instituicaoPretendida + ", cadastro=" + cadastro + ", OBS=" + OBS + ", nomedoPai=" + nomedoPai + ", trabalhodoPai=" + trabalhodoPai + ", profissaodoPai=" + profissaodoPai + ", localdeTrabalhodoPai=" + localdeTrabalhodoPai + ", telefonedoPai=" + telefonedoPai + ", nomedaMae=" + nomedaMae + ", trabalhodaMae=" + trabalhodaMae + ", profissaodaMae=" + profissaodaMae + ", localdeTrabalhodaMae=" + localdeTrabalhodaMae + ", telefonedaMae=" + telefonedaMae + ", nome=" + nome + ", DatadeNascimento=" + DatadeNascimento + ", anosdeNascimento=" + anosdeNascimento + ", mesdeNascimento=" + mesdeNascimento + ", nivel=" + nivel + ", rua=" + rua + ", CEP=" + CEP + ", numero=" + numero + ", bairro=" + bairro + ", telefonedeContato=" + telefonedeContato + '}';
+        return "Pessoa{" + "id=" + id + ", rendaFamiliar=" + rendaFamiliar + ", cuidaCrianca=" + cuidaCrianca + ", encaminhamento=" + encaminhamento + ", instituicao=" + instituicao + ", instituicaoPretendida=" + instituicaoPretendida + ", cadastro=" + cadastro + ", OBS=" + OBS + ", estadoCivil=" + estadoCivil + ", nomedoPai=" + nomedoPai + ", trabalhodoPai=" + trabalhodoPai + ", profissaodoPai=" + profissaodoPai + ", localdeTrabalhodoPai=" + localdeTrabalhodoPai + ", telefonedoPai=" + telefonedoPai + ", nomedaMae=" + nomedaMae + ", trabalhodaMae=" + trabalhodaMae + ", profissaodaMae=" + profissaodaMae + ", localdeTrabalhodaMae=" + localdeTrabalhodaMae + ", telefonedaMae=" + telefonedaMae + ", nome=" + nome + ", DatadeNascimento=" + DatadeNascimento + ", anosdeNascimento=" + anosdeNascimento + ", mesdeNascimento=" + mesdeNascimento + ", nivel=" + nivel + ", rua=" + rua + ", CEP=" + CEP + ", numero=" + numero + ", bairro=" + bairro + ", telefonedeContato=" + telefonedeContato + '}';
     }
                 
 }
